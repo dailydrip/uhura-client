@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'faraday_middleware'
 
 module UhuraClient
@@ -12,27 +14,32 @@ module UhuraClient
     def post(path, _headers = {})
       response = connection.post(path)
       raise APIError, response.body unless response.success?
+
       response
     end
 
     def get(path, _headers = {})
       response = connection.get(path)
       raise APIError, response.body unless response.success?
+
       response
     end
 
-    private def headers
+    private
+
+    def headers
       {
-        Authentication: "Bearer: #{@api_key.to_s}",
+        Authentication: "Bearer: #{@api_key}",
         'Content-Type' => 'application/json'
       }
     end
 
-    private def connection
-      Faraday.new(url: UhuraClient::Config.base_api_url, headers: headers) do |builder|
+    def connection
+      Faraday.new(url: UhuraClient::Config.base_api_url,
+                  headers: headers) do |builder|
         builder.request :json
         builder.adapter :net_http
       end
-    end
+   end
   end
 end
