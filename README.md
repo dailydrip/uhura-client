@@ -18,7 +18,11 @@ export UHURA_BASE_API_URL="http://localhost:3000"
 # define a message
 message = Message.new(
   receiver_sso_id: "id",
-  email: Email.new(subject: "Yo!", message: "Yo!", options: EmailOptions.new(cc: "someoneelse@example.com")),
+  email: Email.new(
+    subject: "Yo!",
+    message: "Yo!",
+    options: EmailOptions.new(cc: "someoneelse@example.com")
+  ),
   template_id: "template_id",
   sms_message: "Yo!"
   )
