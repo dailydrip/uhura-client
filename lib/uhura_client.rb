@@ -12,5 +12,6 @@ require 'uhura_client/clients/message_client'
 
 # Models
 require 'uhura_client/models/email'
+require 'uhura_client/models/message'
 require 'uhura_client/models/email_message'
 require 'uhura_client/models/email_options'
