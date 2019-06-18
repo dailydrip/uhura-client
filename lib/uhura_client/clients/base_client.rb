@@ -14,7 +14,7 @@ module UhuraClient
 
     def post(path, params)
       response = connection.post do |req|
-        req.url path
+        req.url Config.base_api_url + path
         req.headers = headers
         req.body = params.to_json
       end
@@ -34,7 +34,7 @@ module UhuraClient
 
     def headers
       {
-        'Authorization' => 'Bearer: ' + @api_key,
+        'Authorization' => 'Bearer ' + @api_key,
         'Content-Type' => 'application/json',
         'X-Team-ID' => @team_id
       }

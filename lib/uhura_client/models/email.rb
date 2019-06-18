@@ -13,7 +13,7 @@ module UhuraClient
     def deserialize(subject:, message:, options:)
       self.subject = subject
       self.message = EmailMessage.new(message)
-      self.options = EmailOptions.new(options)
+      self.options = EmailOptions.new(options) if options
       self
     end
   end

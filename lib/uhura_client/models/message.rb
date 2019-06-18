@@ -29,7 +29,7 @@ module UhuraClient
                     template_id:,
                     sms_message:)
       self.receiver_sso_id = receiver_sso_id
-      self.email = Email.new(email)
+      self.email = email
       self.sms_message = sms_message
       self.template_id = template_id
       self
