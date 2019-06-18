@@ -8,11 +8,16 @@ module UhuraClient
 
     def initialize(options = {})
       @api_key = options[:api_key]
+      @team_id = options[:team_id]
       @public_token = options[:public_token]
     end
 
-    def post(path, _headers = {})
-      response = connection.post(path)
+    def post(path, params)
+      response = connection.post do |req|
+        req.url path
+        req.headers = headers
+        req.body = params.to_json
+      end
       raise APIError, response.body unless response.success?
 
       response
@@ -29,8 +34,9 @@ module UhuraClient
 
     def headers
       {
-        Authentication: "Bearer: #{@api_key}",
-        'Content-Type' => 'application/json'
+        'Authorization' => 'Bearer: ' + @api_key,
+        'Content-Type' => 'application/json',
+        'X-Team-ID' => @team_id
       }
     end
 

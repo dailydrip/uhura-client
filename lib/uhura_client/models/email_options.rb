@@ -8,6 +8,16 @@ module UhuraClient
       deserialize(json) if json
     end
 
+    def to_hash
+      {
+        "cc": cc,
+        "bcc": bcc,
+        "reply_to": reply_to,
+        "send_at": send_at,
+        "batch_id": batch_id
+      }
+    end
+
     private
 
     def deserialize(json)

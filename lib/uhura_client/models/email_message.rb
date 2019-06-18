@@ -8,6 +8,14 @@ module UhuraClient
       deserialize(json) if json
     end
 
+    def to_hash
+      {
+        "header": header,
+        "section1": section1,
+        "button": button
+      }
+    end
+
     private
 
     def deserialize(json)

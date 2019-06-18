@@ -11,6 +11,17 @@ module UhuraClient
                   sms_message: sms_message)
     end
 
+    def to_hash
+      {
+        receiver_sso_id: receiver_sso_id,
+        email_subject: email.subject,
+        email_message: email.message.to_hash,
+        email_options: email.options.to_hash,
+        template_id: template_id,
+        sms_message: sms_message
+      }
+    end
+
     private
 
     def deserialize(receiver_sso_id:,

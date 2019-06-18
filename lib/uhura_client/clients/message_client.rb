@@ -6,6 +6,11 @@ module UhuraClient
       super(options)
     end
 
-    def send_message(_message); end
+    def send_message(message)
+      response = post('/messages', message.to_hash)
+      response_message = JSON.parse(response.body)
+      p response_message
+      response_message
+    end
   end
 end
