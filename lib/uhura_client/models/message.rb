@@ -2,13 +2,14 @@
 
 module UhuraClient
   class Message
-    attr_accessor :receiver_sso_id, :email, :template_id, :sms_message
+    attr_accessor :id, :receiver_sso_id, :email, :template_id, :sms_message
 
-    def initialize(receiver_sso_id:, email:, template_id:, sms_message:)
-      deserialize(receiver_sso_id: receiver_sso_id,
-                  email: email,
-                  template_id: template_id,
-                  sms_message: sms_message)
+    def initialize(**args)
+      deserialize(id: args[:id],
+                  receiver_sso_id: args[:receiver_sso_id],
+                  email: args[:email],
+                  template_id: args[:template_id],
+                  sms_message: args[:sms_message])
     end
 
     def to_hash
@@ -24,10 +25,14 @@ module UhuraClient
 
     private
 
-    def deserialize(receiver_sso_id:,
-                    email:,
-                    template_id:,
-                    sms_message:)
+    def deserialize(
+      id:,
+      receiver_sso_id:,
+      email:,
+      template_id:,
+      sms_message:
+    )
+      self.id = id
       self.receiver_sso_id = receiver_sso_id
       self.email = email
       self.sms_message = sms_message

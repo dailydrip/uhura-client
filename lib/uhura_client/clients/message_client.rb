@@ -12,5 +12,11 @@ module UhuraClient
       p response_message
       response_message
     end
+
+    def status_of(message)
+      response = get("/api/v1/messages/#{message.id}/status")
+      response_message = JSON.parse(response.body)
+      response_message
+    end
   end
 end
