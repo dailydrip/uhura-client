@@ -1,28 +1,22 @@
 # frozen_string_literal: true
 
 module UhuraClient
-  class EmailMessage
-    attr_accessor :header, :section1, :button
+  class EmailMessage < DynamicAttrs
+    #attr_accessor :header, :section1, :button
 
     def initialize(json)
-      deserialize(json) if json
+      json&.each do |k, v|
+        create_attr(k)
+        send("#{k}=", v)
+      end
     end
 
     def to_hash
-      {
-        "header": header,
-        "section1": section1,
-        "button": button
-      }
-    end
-
-    private
-
-    def deserialize(json)
-      self.header = json['header']
-      self.section1 = json['section1']
-      self.button = json['button']
-      self
+      hash = {}
+      self.instance_variables.each do |i|
+        hash[i.to_s.delete("@")] = self.instance_variable_get(i)
+      end
+      hash
     end
   end
 end
