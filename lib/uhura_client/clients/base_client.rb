@@ -23,8 +23,11 @@ module UhuraClient
       response
     end
 
-    def get(path, _headers = {})
-      response = connection.get(path)
+    def get(path)
+      response = connection.get do |req|
+        req.url Config.base_api_url + path
+        req.headers = headers
+      end
       raise APIError, response.body unless response.success?
 
       response
