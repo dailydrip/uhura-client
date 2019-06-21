@@ -7,9 +7,9 @@ module UhuraClient
     end
 
     def send_message(message)
-      response = post('/messages', message.to_hash)
+      response = post('/api/v1/messages/', message.to_hash)
       response_message = JSON.parse(response.body)
-      p response_message
+      # p response_message
       response_message
     end
 
