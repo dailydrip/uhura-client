@@ -11,7 +11,7 @@ module UhuraClient
       end
     end
 
-    def to_hash
+    def to_h
       hash = {}
       self.instance_variables.each do |i|
         hash[i.to_s.delete("@")] = self.instance_variable_get(i)
