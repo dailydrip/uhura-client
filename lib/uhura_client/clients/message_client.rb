@@ -7,14 +7,13 @@ module UhuraClient
     end
 
     def send_message(message)
-      response = post('/api/v1/messages/', message.to_hash)
+      response = post('/messages', message.to_h)
       response_message = JSON.parse(response.body)
-      # p response_message
       response_message
     end
 
     def status_of(message)
-      response = get("/api/v1/messages/#{message.id}/status")
+      response = get("/messages/#{message.id}/status")
       response_message = JSON.parse(response.body)
       response_message
     end

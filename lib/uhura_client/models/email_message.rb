@@ -4,10 +4,10 @@ module UhuraClient
   class EmailMessage < DynamicAttrs
     #attr_accessor :header, :section1, :button
 
-    def initialize(json)
-      json&.each do |k, v|
+    def initialize(hash)
+      hash&.each do |k, v|
         create_attr(k)
-        send("#{k}=", v)
+        send("#{k.to_s}=", v)
       end
     end
 

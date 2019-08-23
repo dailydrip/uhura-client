@@ -21,11 +21,11 @@ module UhuraClient
     private
 
     def deserialize(json)
-      self.cc = json['cc']
-      self.bcc = json['bcc']
-      self.reply_to = json['reply_to']
-      self.send_at = json['send_at']
-      self.batch_id = json['batch_id']
+      self.cc = json[:cc]
+      self.bcc = json[:bcc]
+      self.reply_to = json[:reply_to]
+      self.send_at = json[:send_at]
+      self.batch_id = json[:batch_id]
       self
     end
   end
