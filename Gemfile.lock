@@ -23,7 +23,7 @@ GEM
     parser (2.6.3.0)
       ast (~> 2.4.0)
     rainbow (3.0.0)
-    rake (12.3.2)
+    rake (13.0.1)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
       rspec-expectations (~> 3.8.0)
@@ -53,7 +53,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 2.0.2)
   byebug
-  rake (~> 12.3.2)
+  rake (~> 13.0.1)
   rspec (~> 3.8)
   rubocop
   uhura_client!
